@@ -1,5 +1,6 @@
 package main;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -19,27 +20,27 @@ public class ToughQuestions1 {
        String acc_name;
        String type;
        System.out.println("Enter the account number");
-       acc_no = Integer.parseInt(br.readLine());
+       acc_no = Integer.parseInt(BoundedLineReader.readLine(br, 5_000_000));
        System.out.println("Enter the account holder name");
-       acc_name = br.readLine();
+       acc_name = BoundedLineReader.readLine(br, 5_000_000);
        System.out.println("Enter the type of account");
-       type = br.readLine();
+       type = BoundedLineReader.readLine(br, 5_000_000);
        System.out.println("Enter the balance");
-       bal = Integer.parseInt(br.readLine());
+       bal = Integer.parseInt(BoundedLineReader.readLine(br, 5_000_000));
        Account a = new Account(acc_no,acc_name,type,bal);
        do
        {
        System.out.println("1. Credit Account \n2. Debit Account \n3. Display Account Details");
        System.out.println("Enter your choice");
-       choice = Integer.parseInt(br.readLine());
+       choice = Integer.parseInt(BoundedLineReader.readLine(br, 5_000_000));
        switch(choice)
        {
            case 1: System.out.println("Enter the amount to be credited");
-           credit = Integer.parseInt(br.readLine());
+           credit = Integer.parseInt(BoundedLineReader.readLine(br, 5_000_000));
            a.credit(credit);
            break;
            case 2: System.out.println("Enter the amount to be debited");
-           debit = Integer.parseInt(br.readLine());
+           debit = Integer.parseInt(BoundedLineReader.readLine(br, 5_000_000));
            a.debit(debit);
            break;
            case 3:a.display();
